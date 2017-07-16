@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">DemoGram</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Home</a></li>
+      <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/allposts">All Posts</a></li>
+      <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/following">Following</a></li>
+      <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/myposts">My Posts</a></li>
+      <li routerLinkActive="active" *ngIf="isLoggedIn"><a routerLink="/favorites">Favorites</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown" *ngIf="isLoggedIn">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript: void(0)"><span class="user-name-display">{{name}}</span>
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="javascript:void(0)"><span class="user-title">Email: </span><span class="user-data">{{email}}</span></a></li>
+          <li><a href="javascript:void(0)"><span class="user-title">Uid: </span><span class="user-data">{{uid}}</span></a></li>
+        </ul>
+      </li>
+      <li routerLinkActive="active" *ngIf="!isLoggedIn"><a routerLink="/signup"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+      <li routerLinkActive="active" *ngIf="!isLoggedIn"><a routerLink="/signin"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+      <li *ngIf="isLoggedIn"><a href="javascript:void(0)"(click)="onSignout()"><span class="glyphicon glyphicon-off"></span> Sign out</a></li>
+    </ul>
+  </div>
+</nav>

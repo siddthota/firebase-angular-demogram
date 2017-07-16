@@ -1,0 +1,18 @@
+.user-title {
+  font-size: 10px;
+  font-weight: bold;
+  color: cadetblue;
+}
+
+.user-data {
+  font-size: 10px;
+  font-style: italic;
+  color: cadetblue;
+
+}
+
+.user-name-display {
+  font-size: 12px;
+  font-style: italic;
+  color: red;
+}
