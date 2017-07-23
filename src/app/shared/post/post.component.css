@@ -33,6 +33,11 @@ img{
   padding: 5px;
 }
 
+.row0 {
+  background-color: black;
+  color: white;
+}
+
 .row1{
  background-color: aliceblue;
 }
@@ -43,6 +48,10 @@ img{
 
 .row3{
   background-color: bisque;
+}
+
+.row5{
+  background-color: darkkhaki;
 }
 
 .action-row {

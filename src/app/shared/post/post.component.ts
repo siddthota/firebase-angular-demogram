@@ -11,6 +11,7 @@ export class PostComponent implements OnInit {
   imageData: any = {};
   @Input() displayFavoritesButton: boolean = true;
   @Input() displayPostedBy: boolean = true;
+  @Input() displayFollowButton: boolean = true;
 
 
   fileUrl: string;
@@ -18,6 +19,7 @@ export class PostComponent implements OnInit {
   defaultImage = "http://via.placeholder.com/150x150";
 
   @Output() favoriteClicked = new EventEmitter<any>();
+  @Output() followClicked = new EventEmitter<any>();
 
   constructor() { }
 
@@ -33,6 +35,7 @@ export class PostComponent implements OnInit {
 
         if (uid === this.imageData.uploadedBy.uid) {
           this.displayFavoritesButton = false;
+          this.displayFollowButton = false;
         }
       });
 
@@ -42,5 +45,9 @@ export class PostComponent implements OnInit {
 
   onFavoritesClicked() {
     this.favoriteClicked.emit(this.imageData);
+  }
+
+  onFollowClicked() {
+    this.followClicked.emit(this.imageData);
   }
 }

@@ -60,6 +60,17 @@ export class AllPostsComponent implements OnInit, OnDestroy {
       });
   }
 
+  onFollowClicked(imageData) {
+    this.fire.followUser(imageData.uploadedBy)
+      .then(() => {
+        this.notifier.display('success', 'Following ' + imageData.uploadedBy.name + "!!!");
+      })
+      .catch(err => {
+        this.notifier.display('error', err);
+      });
+
+  }
+
   ngOnDestroy() {
     this.allRef.off();
     if (this.loadMoreRef) {
@@ -68,3 +79,4 @@ export class AllPostsComponent implements OnInit, OnDestroy {
   }
 
 }
+

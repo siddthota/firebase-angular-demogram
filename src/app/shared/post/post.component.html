@@ -5,6 +5,10 @@
   </div>
 
   <div class="text-section">
+    <div class="text-section-row row0">
+      <span>{{imageData.name}}</span>
+    </div>
+
     <div *ngIf="imageData.creationDate" class="text-section-row row1">
       <span>Posted on: {{imageData.creationDate | date: 'MM/dd/yy'}}</span>
     </div>
@@ -24,6 +28,12 @@
       </span>
     </div>
 
+    <div class="text-section-row row5 action-row hvr-grow" *ngIf="displayFollowButton">
+      <span (click)="onFollowClicked()">
+        <span class="glyphicon glyphicon-tags"></span>
+        Follow User
+      </span>
+    </div>
   </div>
 
 </div>

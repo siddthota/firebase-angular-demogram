@@ -11,6 +11,7 @@
         <app-post *ngFor="let post of all"
                   [imageName]="post.data.name"
                   (favoriteClicked)="onFavoritesClicked($event)"
+                  (followClicked)="onFollowClicked($event)"
         >
         </app-post>
       </div>

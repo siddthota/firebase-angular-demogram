@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import {UserService} from "../shared/user.service";
 import {Router} from "@angular/router";
+import {FirebaseApiService} from "../shared/firebase-api.service";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,10 @@ export class HeaderComponent implements OnInit {
   email: string;
   uid: string;
 
-  constructor(private user: UserService, private router: Router) { }
+  constructor(private user: UserService,
+              private router: Router,
+              private fire: FirebaseApiService
+  ) { }
 
   ngOnInit() {
     this.user.statusChange.subscribe(userData => {
@@ -30,6 +34,21 @@ export class HeaderComponent implements OnInit {
         this.uid = null;
       }
 
+    });
+
+    firebase.auth().onAuthStateChanged(userData => {
+      if (userData && userData.emailVerified) {
+        if (this.isLoggedIn) {
+          console.log('User is Logged in and menu options should be visible');
+        } else {
+          console.log('User is Logged in i.e never explicitly logged out but the state in our header is incorrect');
+          this.fire.getUserFromDatabase(userData.uid)
+            .then(userDataFromDatabase => {
+              this.user.set(userDataFromDatabase);
+              this.router.navigate(["/allposts"]);
+            })
+        }
+      }
     });
 
   }

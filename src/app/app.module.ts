@@ -18,6 +18,9 @@ import { NotificationService } from "./shared/notification.service";
 import { FirebaseApiService } from "./shared/firebase-api.service";
 import { UserService } from "./shared/user.service";
 import { PostComponent } from './shared/post/post.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToasterModule} from "angular2-toaster";
+import {LiveMessageService} from "./shared/livemessages.service";
 
 @NgModule({
   declarations: [
@@ -36,9 +39,11 @@ import { PostComponent } from './shared/post/post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToasterModule
   ],
-  providers: [RouteGuard, NotificationService, FirebaseApiService, UserService],
+  providers: [RouteGuard, NotificationService, FirebaseApiService, UserService, LiveMessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
