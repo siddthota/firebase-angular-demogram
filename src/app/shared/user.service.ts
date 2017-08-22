@@ -24,7 +24,7 @@ export class UserService {
 
             messaging.onMessage(payload => {
               console.log(payload);
-              this.liveMessages.display(payload.notification);
+              this.liveMessages.display(payload['notification']);
             });
 
             updates['/users/' + userFromDatabase.uid + "/messageToken"] = token;
