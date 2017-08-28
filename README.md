@@ -9,6 +9,6 @@
      $ firebase-angular-demogram > npm install
 4. Open up app.component.ts and replace the firebase configuration keys
 5. Run command at root directory of this project:
-     $ firebase-angular-demogram > ng server
+     $ firebase-angular-demogram > ng serve
 6. Open in browser
     http://localhost:4200
